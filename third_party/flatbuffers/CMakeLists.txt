@@ -1,5 +1,7 @@
 # Third-party library: FlatBuffers
 
+include(FetchContent)
+
 FetchContent_Declare(
     flatbuffers
     GIT_REPOSITORY https://github.com/google/flatbuffers.git
