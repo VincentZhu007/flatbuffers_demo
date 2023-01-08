@@ -1,6 +1,6 @@
-name: flatbuffer_demo_ci
+name: CI
 
-run-name: ${{ github.actor }} triggers flatbuffer_dmeo CI
+run-name: CI triggered by ${{ github.actor }}
 
 # Trigger events
 on:
@@ -10,8 +10,8 @@ on:
 
 # Build jobs
 jobs:
-  build:
-    name: "Build on Linux"
+  CI on Ubuntu:
+    name: "Build And Test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,5 +32,9 @@ jobs:
       - name: "Run test"
         run: |
           cd ${{ github.workspace }}/build
-          ./CTest
+          make test
+      - name: "Run demo"
+	run: |
+          cd ${{ github.workspace }}/build
+	  ./src/flatbuffers_demo
 
