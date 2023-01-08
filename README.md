@@ -2,6 +2,8 @@
 
 This C++ project contains several FlatBuffer **startup** demos.
 
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/vincentzhu007/flatbuffers_demo/daily_ci.yaml)
+
 ### Demo List
 
 - [x] FlatBuffer official tutorial: monster
