@@ -1,0 +1,36 @@
+name: Daily Build
+run-name: Daily Build
+
+on:
+  schedule:
+    - cron: '30 2,14 * * *'
+
+# Build jobs
+jobs:
+  UbuntuCI:
+    name: "Daily Build On Ubuntu"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Run cmake"
+        run: |
+          cmake --version
+          cd ${{ github.workspace }}
+          ls
+          mkdir -p build/output
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/output -DCMAKE_BUILD_TYPE=Release ../
+          ls
+      - name: "Run make"
+        run: |
+          cd ${{ github.workspace }}/build
+          make -j
+          make install
+      - name: "Run test"
+        run: |
+          cd ${{ github.workspace }}/build
+          make test
+      - name: "Run demo"
+        run: |
+          cd ${{ github.workspace }}/build
+          ./src/flatbuffers_demo
