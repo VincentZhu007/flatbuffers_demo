@@ -1,5 +1,5 @@
-name: CI
-run-name: CI Triggered By ${{ github.actor }}
+name: CI Checker
+run-name: Push CI Triggered By ${{ github.actor }}
 
 # Trigger events
 on:
@@ -10,7 +10,7 @@ on:
 # Build jobs
 jobs:
   UbuntuCI:
-    name: "Build And Test On Ubuntu"
+    name: "Push CI On Ubuntu"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
