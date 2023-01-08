@@ -1,0 +1,37 @@
+name: flatbuffer_demo_ci
+
+run-name: ${{ github.actor }} triggers flatbuffer_dmeo CI
+
+# Trigger events
+on:
+  push:
+    branchs:
+      - master
+
+# Build jobs
+jobs:
+  build:
+    name: "Build flatbuffer_demo on Linux"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "run cmake"
+        run: |
+          cmake --version
+          cd ${{ github.workspace }}
+          ls
+          mkdir -p build/output
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/output -DCMAKE_BUILD_TYPE=Release ../
+          ls
+      - name: "run make"
+        run: |
+          cd ${{ github.workspace }}/build
+          make -j 4
+          make install
+          ls "${{env.prefix}}"
+      - name: "run test"
+        run: |
+          cd ${{ github.workspace }}/build
+          ./CTest
+
