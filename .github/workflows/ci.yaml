@@ -1,5 +1,4 @@
 name: CI
-
 run-name: CI triggered by ${{ github.actor }}
 
 # Trigger events
@@ -36,5 +35,5 @@ jobs:
       - name: "Run demo"
 	run: |
           cd ${{ github.workspace }}/build
-	  ./src/flatbuffers_demo
+          ./src/flatbuffers_demo
 
