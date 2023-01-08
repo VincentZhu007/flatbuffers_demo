@@ -1,5 +1,5 @@
-name: CI Checker
-run-name: Push CI Triggered By ${{ github.actor }}
+name: Push Checker
+run-name: Push Checker Triggered By ${{ github.actor }}
 
 # Trigger events
 on:
