@@ -32,8 +32,3 @@ jobs:
         run: |
           cd ${{ github.workspace }}/build
           make test
-      - name: "Run demo"
-        run: |
-          cd ${{ github.workspace }}/build
-          ./src/flatbuffers_demo
-
